@@ -1,0 +1,30 @@
+{
+	"name": "am-symfony-extras",
+	"description": "Symfony2 Extras Bundle And Components",
+	"autoload": {
+		"psr-0": {
+			"AM\Bundle\ExtrasBundle": "src/",
+			"AM\Component": "src/"
+		}
+	},
+	"repositories": [
+		{
+			"name": "am-symfony-extras",
+			"url": "git://github.com/createvibe/am-symfony-extras.git",
+			"type": "git"
+		}
+	],
+	"require": {
+		"php": ">=5.3.3",
+		"symfony/symfony": "2.3.*"
+	},
+	"scripts": { },
+	"config": {
+		"bin-dir": "bin"
+	},
+	"minimum-stability": "dev",
+	"extra": {
+		"symfony-app-dir": "app",
+		"symfony-web-dir": "web"
+	}
+}
