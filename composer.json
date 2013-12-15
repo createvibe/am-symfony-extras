@@ -3,8 +3,8 @@
 	"description": "Symfony2 Extras Bundle And Components",
 	"autoload": {
 		"psr-0": {
-			"AM\Bundle\ExtrasBundle": "src/",
-			"AM\Component": "src/"
+			"AM\\Bundle\\ExtrasBundle": "src/",
+			"AM\\Component": "src/"
 		}
 	},
 	"repositories": [
