@@ -22,6 +22,12 @@ use AM\Component\Form\Interfaces\FormProcessorInterface;
 abstract class AbstractProcessor implements FormProcessorInterface
 {
 	/**
+	 * Know if self::processedForm was called and returned true
+	 * @var bool
+	 */
+	private $processedForm = false;
+
+	/**
 	 * The User we are processing for
 	 * @var null|mixed
 	 */
@@ -171,10 +177,20 @@ abstract class AbstractProcessor implements FormProcessorInterface
 	}
 
 	/**
+	 * See if the form has processed successfully
+	 * @return bool
+	 */
+	public function isProcessedForm()
+	{
+		return $this->processedForm;
+	}
+
+	/**
 	 * {@inheritdoc}
 	 */
 	public function process(Form &$form)
 	{
+		// TODO : Form Events
 		if (null === $this->request)
 		{
 			throw new FormProcessorException('The form cannot be processed outside the request scope.');
@@ -188,6 +204,12 @@ abstract class AbstractProcessor implements FormProcessorInterface
 				if ($bool = $this->processForm($form))
 				{
 					$form = $cloned;
+					$this->processedForm = true;
+					return true;
+				}
+				else
+				{
+					$this->processedForm = false;
 				}
 			}
 			return false;
